@@ -6,10 +6,13 @@
     content="width=device-width,minimum-scale=1,initial-scale=1">
     <title>Chico's Cheese Bicycles</title>
 
+    <meta name="amp-script-src" content="sha384-X8xW7VFd-a-kgeKjsR4wgFSUlffP7x8zpVmqC6lm2DPadWUnwfdCBJ2KbwQn6ADE sha384-nNFaDRiLzgQEgiC5kP28pgiJVfNLVuw-nP3VBV-e2s3fOh0grENnhllLfygAuU_M sha384-u7NPnrcs7p4vsbGLhlYHsId_iDJbcOWxmBd9bhVuPoA_gM_he4vyK6GsuvFvr2ym">
+
     <script async src="https://cdn.ampproject.org/v0.js"></script>
     <script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>
     <script async custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"></script>
     <script async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js"></script>
+    <script async custom-element="amp-script" src="https://cdn.ampproject.org/v0/amp-script-0.1.js"></script>
 
     <link
       rel="shortcut icon"
@@ -27,7 +30,7 @@
     <header class="headerbar"><h2>Chico's Cheese Bicycles</h2></header>
     <main>
       <div class="main-content">
-        <amp-img           src="https://cdn.glitch.com/d7f46a57-0ca4-4cca-ab0f-69068dec6631%2Fricotta-racer.jpg?1540228217746"
+        <amp-img src="https://cdn.glitch.com/d7f46a57-0ca4-4cca-ab0f-69068dec6631%2Fricotta-racer.jpg?1540228217746"
         layout="responsive" width="640" height="480"></amp-img>
 
         <amp-youtube data-videoid="BlpMQ7fMCzA" layout="responsive" width="480" height="270"></amp-youtube>
@@ -50,6 +53,12 @@
             rodent-repelling varnish they last longer than ever!
           </p>
         </div>
+
+        <amp-script layout="container"
+        src="https://amp.dev/documentation/examples/components/amp-script/hello-world.js"
+        class="amp-script-sample">
+        <button id="hello">Click!</button>
+      </amp-script>        
 
         <div class="social-bar">
           <amp-social-share type="email" width="44" height="44"></amp-social-share>
