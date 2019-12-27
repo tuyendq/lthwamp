@@ -9,6 +9,7 @@
     <meta name="amp-script-src" content="sha384-JJ8hybcP8hhYy9N0ruZaJF5DqeLX5R5Aa1Kd4OPrB26C_2Gy33RFc4Z_IBQel0MA">
 
     <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
     <script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>
     <script async custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"></script>
     <script async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js"></script>
@@ -27,6 +28,69 @@
         line-height: 1.5rem;
         min-width: 20rem;
       }
+      .headerbar {
+        align-items: center;
+        background-color: #fff;
+        box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.1);
+        display: flex;
+        left: 0;
+        padding-left: 1rem;
+        position: fixed;
+        right: 0;
+        top: 0;
+        z-index: 999;
+      }
+      .headerbar + :not(amp-sidebar),
+      .headerbar + amp-sidebar + * {
+        margin-top: 3.5rem;
+      }
+      h2 {
+        font-weight: 400;
+        margin: 0;
+        padding: 0;
+      }
+      .h2,
+      h2 {
+        font-size: 1.4rem;
+        line-height: 2.5rem;
+      }
+      .sidebar .dropdown-item,
+      .sidebar .dropdown header,
+      .sidebar .nav-item {
+        margin: 0 0 2rem;
+      }
+      .sidebar {
+        background-color: rgb(255, 253, 243);
+        min-width: 18.75rem;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        width: 18.75rem;
+      }
+      .navbar-trigger {
+        cursor: pointer;
+        font-size: 2rem;
+        line-height: 3.5rem;
+        outline: none;
+        padding-right: 1rem;
+      }
+      a {
+        color: #000;
+        text-decoration: none;
+      }
+      .label {
+        font-size: 0.875rem;
+        letter-spacing: 0.06rem;
+        line-height: 1.125rem;
+        list-style: none;
+        padding: 0;
+        text-transform: uppercase;
+      }
+      .dropdown > section > header {
+        background-color: rgba(0, 0, 0, 0);
+        border: 0;
+        outline: none;
+      }
+
       main {
         margin: 0 auto;
         max-width: 50rem;
@@ -37,26 +101,38 @@
       .below-hero {
         margin: 1.5rem;
       }
+
+      amp-youtube {
+        margin-top: 2rem;
+      }
+      .social-bar {
+        margin-top: 3.5rem;
+        margin-bottom: 1rem;
+      }
     </style>
     
   </head>
   <body>
-    <header class="headerbar"><h2>Chico's Cheese Bicycles</h2></header>
+    <header class="headerbar">
+      <div class="navbar-trigger" role="button" tabindex="0" on="tap:sidebar1.toggle">☰</div>
+      <h2>Chico's Cheese Bicycles</h2>
+    </header>
+    <amp-sidebar class="sidebar" id="sidebar1" side="left">
+      <div class="navbar-trigger" role="button" tabindex="0" on="tap:sidebar1.toggle">X</div>
+      <nav class="nav">
+        <ul class="label">
+          <li class="nav-item"><a href="#">Our Story</a></li>
+          <li class="nav-item"><a href="#">Our Bikes</a></li>
+          <li class="nav-item"><a href="#">Latest Models</a></li>
+          <li class="nav-item"><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </amp-sidebar>
+
     <main>
       <div class="main-content">
         <amp-img src="https://cdn.glitch.com/d7f46a57-0ca4-4cca-ab0f-69068dec6631%2Fricotta-racer.jpg?1540228217746"
         layout="responsive" width="640" height="480"></amp-img>
-
-        <amp-youtube data-videoid="BlpMQ7fMCzA" layout="responsive" width="480" height="270"></amp-youtube>
-
-        <amp-carousel layout="responsive" width="412" height="309" type="slides" loop>
-          <amp-img src="https://cdn.glitch.com/d7f46a57-0ca4-4cca-ab0f-69068dec6631%2Fcheddar-chaser.jpg?1540228205366"
-                   width="412" height="309" layout="responsive"></amp-img>
-          <amp-img src="https://cdn.glitch.com/d7f46a57-0ca4-4cca-ab0f-69068dec6631%2Fcheese.jpg?1540228223785"
-                   width="412" height="309" layout="responsive"></amp-img>
-          <amp-img src="https://cdn.glitch.com/d7f46a57-0ca4-4cca-ab0f-69068dec6631%2Fmouse.jpg?1540228223963"
-                   width="412" height="309" layout="responsive"></amp-img>
-      </amp-carousel>
 
         <div class="below-hero">
           <h2 class="main-heading">What we're about</h2>
@@ -66,7 +142,24 @@
             hungry. Our bikes are 100% biodegradable. And with our new
             rodent-repelling varnish they last longer than ever!
           </p>
+          <amp-carousel layout="responsive" width="412" height="309" type="slides" loop>
+            <amp-img src="https://cdn.glitch.com/d7f46a57-0ca4-4cca-ab0f-69068dec6631%2Fcheddar-chaser.jpg?1540228205366"
+                     width="412" height="309" layout="responsive"></amp-img>
+            <amp-img src="https://cdn.glitch.com/d7f46a57-0ca4-4cca-ab0f-69068dec6631%2Fcheese.jpg?1540228223785"
+                     width="412" height="309" layout="responsive"></amp-img>
+            <amp-img src="https://cdn.glitch.com/d7f46a57-0ca4-4cca-ab0f-69068dec6631%2Fmouse.jpg?1540228223963"
+                     width="412" height="309" layout="responsive"></amp-img>
+        </amp-carousel>          
+
         </div>
+
+
+
+      <amp-youtube data-videoid="BlpMQ7fMCzA" layout="responsive" width="480" height="270">
+        <div fallback><p>The video could not be loaded.</p></div>
+      </amp-youtube>      
+
+
 
         <amp-script layout="container"
         src="https://amp.dev/documentation/examples/components/amp-script/hello-world.js">
