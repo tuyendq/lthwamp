@@ -16,7 +16,7 @@
     <script async custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"></script>
     <script async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js"></script>
     <script async custom-element="amp-script" src="https://cdn.ampproject.org/v0/amp-script-0.1.js"></script>
-
+    <script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
     <link
       rel="shortcut icon"
       href="https://cdn.glitch.com/d7f46a57-0ca4-4cca-ab0f-69068dec6631%2Fcheese-favicon.png?1540228964214"
@@ -92,7 +92,30 @@
         border: 0;
         outline: none;
       }
-
+      .dropdown {
+        min-width: 12rem;
+      }
+      .dropdown.absolute {
+        z-index: 100;
+      }
+      .dropdown.absolute > section,
+      .dropdown.absolute > section > header {
+        height: 100%;
+      }
+      .nav-dropdown .dropdown > section > header:after {
+        color: #003f93;
+        content: "+";
+        display: inline-block;
+        padding: 0 0 0 1.5rem;
+      }
+      .nav-dropdown .dropdown > [expanded] > header:after {
+        content: "-";
+      }
+      .dropdown-items {
+        list-style: none;
+        padding-left: 1rem;
+        z-index: 200;
+      }
       main {
         margin: 0 auto;
         max-width: 50rem;
@@ -104,10 +127,103 @@
         margin: 1.5rem;
       }
 
+      .main-heading {
+        font-size: 1.6rem;
+        font-weight: 400;
+        letter-spacing: 0.06rem;
+        line-height: 2.5rem;
+        margin-top: 2.7rem;
+        outline: none;
+        padding-top: 1rem;
+      }
+
       amp-youtube {
         margin-top: 2rem;
       }
+
+      .subscribe-card-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 1.25rem;
+      }
+      .subscribe-card {
+        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+        width: 300px;
+      }
+      .main-form {
+        -ms-flex-direction: column;
+        -webkit-box-direction: normal;
+        -webkit-box-orient: vertical;
+        flex-direction: column;
+        margin-top: 0.8rem;
+        padding: 1rem;
+      }
+      .form-input-container {
+        -ms-flex-pack: center;
+        -webkit-box-pack: center;
+        display: -ms-flexbox;
+        display: -webkit-box;
+        display: flex;
+        justify-content: center;
+      }
+      input {
+        font-family: sans-serif;
+        font-size: 100%;
+        width: 230px;
+      }
+      .input {
+        left: calc(50% - (230px / 2));
+        margin-bottom: 1.5rem;
+        max-width: 100%;
+        position: relative;
+      }
+      .input > input {
+        background: none;
+        border: 0;
+        border-bottom: 1px solid #4a4a4a;
+        border-radius: 0;
+        color: #4a4a4a;
+        line-height: 1.5rem;
+        margin-top: 1rem;
+        outline: 0;
+        width: 100%;
+
+      }
+      .input > label {
+        top:0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        line-height: 1rem;
+        position: absolute;
+        text-align: left;
+      }
+     
+      .btn {
+        background-color: #000;
+        border:  1px solid #fff;
+        color: #FFF;
+        cursor: pointer;
+        font-family: inherit;
+        font-size: 1rem;
+        left: calc(50% - (150px / 2));
+        letter-spacing: 0.2em;
+        line-height: 1.125rem;
+        padding: 0.7em 0.8em;
+        position: relative;
+        text-decoration: none;
+        text-transform: uppercase;
+        vertical-align: middle;
+        white-space: nowrap;
+        width: 10rem;
+        word-wrap: normal;
+      }
+
+
+
       .social-bar {
+        display: flex;
+        justify-content: center;
         margin-top: 3.5rem;
         margin-bottom: 1rem;
       }
@@ -129,12 +245,11 @@
             <amp-accordion class="dropdown" layout="container" disable-session-states>
               <section>
                 <header>Our Bikes</header>
-                <ul>
-                  <a>Ricotta Racer</a>
-                  <a>Cheddar Chase</a>
-                  <a>Parmesan Pacer</a>
+                <ul class="dropdown-items">
+                  <li class="dropdown-item"><a href="#">Ricotta Racer</a></li>
+                  <li class="dropdown-item"><a href="#">Cheddar Chase</aa href="#"></li>
+                  <li class="dropdown-item"><a href="#">Parmesan Pacer</a href="#"></li>
                 </ul>
-
               </section>
             </amp-accordion>
           </li>
@@ -181,13 +296,27 @@
 
         </div>
 
-
-
       <amp-youtube data-videoid="BlpMQ7fMCzA" layout="responsive" width="480" height="270">
         <div fallback><p>The video could not be loaded.</p></div>
       </amp-youtube>      
 
 
+<h2 class="main-heading">Subscribe to our news letter</h2>
+<div class="subscribe-card-container">
+  <div class="subscribe-card">
+    <form method="post" action-xhr="/submit-form" class="main-form">
+      <div class="input">
+        <input type="text" name="name" id="form-name" required>
+        <label for="form-name">Name:</label>
+      </div>
+      <div class="input">
+        <input type="email" name="email" id="form-email" required>
+        <label for="form-email">Email:</label>
+      </div>
+      <input class="btn" type="submit" value="Subscribe">
+    </form>
+  </div>
+</div>
 
         <amp-script layout="container"
         src="https://amp.dev/documentation/examples/components/amp-script/hello-world.js">
