@@ -309,13 +309,15 @@
       word-wrap: normal;
     }
 
-
-
     .social-bar {
       display: flex;
       justify-content: center;
       margin-top: 3.5rem;
       margin-bottom: 1rem;
+    }
+    .pull-righ {
+      position: absolute;
+      right: 0;
     }
   </style>
 
@@ -323,11 +325,11 @@
 
 <body>
   <header class="headerbar">
-    <div class="navbar-trigger" role="button" tabindex="0" on="tap:sidebar1.toggle">☰</div>
+    <div class="navbar-trigger pull-right" role="button" tabindex="0" on="tap:sidebar1.toggle">☰</div>
     <h2>Chico's Cheese Bicycles</h2>
   </header>
-  <amp-sidebar class="sidebar" id="sidebar1" layout="nodisplay" side="left">
-    <div class="navbar-trigger" role="button" tabindex="0" on="tap:sidebar1.toggle">X</div>
+  <amp-sidebar class="sidebar" id="sidebar1" layout="nodisplay" side="right">
+    <div class="navbar-trigger pull-right" role="button" tabindex="0" on="tap:sidebar1.toggle">X</div>
     <nav class="nav">
       <ul class="label">
         <li class="nav-item dropdown-item"><a href="#">Our Story</a></li>
@@ -411,6 +413,22 @@
           </form>
         </div>
       </div>
+
+      <h2 class="main-heading">Insert SVG</h2>
+      <amp-carousel layout="responsive" width="480" height="480" type="slides" autoplay loop>
+      <amp-img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Hanzi.svg" layout="responsive"
+        width="480"
+        height="480"
+        alt="">
+      </amp-img>
+      
+      <amp-img src="https://upload.wikimedia.org/wikipedia/commons/f/fe/Chinese_character_%E6%8E%A1_cai3_pick_with_ROOT_colored.svg"
+      width="480"
+      height="480"
+      alt="">
+    </amp-img>
+  </amp-carousel>
+      
       <h2 class="main-heading">Test Javascript</h2>
       <amp-script layout="container" src="https://amp.dev/documentation/examples/components/amp-script/hello-world.js">
         <button class="btn" id="hello">Remote JS</button>
