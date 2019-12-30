@@ -14,9 +14,16 @@
 
   <script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>
   <script async custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"></script>
+  <script async custom-element="amp-selector" src="https://cdn.ampproject.org/v0/amp-selector-0.1.js"></script>
+  <script async custom-element="amp-lightbox-gallery"
+    src="https://cdn.ampproject.org/v0/amp-lightbox-gallery-0.1.js"></script>
+    <script async custom-element="amp-image-lightbox" src="https://cdn.ampproject.org/v0/amp-image-lightbox-0.1.js"></script>
+
   <script async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js"></script>
   <script async custom-element="amp-script" src="https://cdn.ampproject.org/v0/amp-script-0.1.js"></script>
   <script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
+  <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js"></script>
+
   <link rel="shortcut icon"
     href="https://cdn.glitch.com/d7f46a57-0ca4-4cca-ab0f-69068dec6631%2Fcheese-favicon.png?1540228964214" />
 
@@ -220,6 +227,22 @@
       padding-top: 1rem;
     }
 
+    .main-text {
+      margin-bottom: 2rem;
+    }
+
+    amp-selector amp-img[option] {
+      opacity: 0.4;
+    }
+
+    amp-selector amp-img[option][selected] {
+      opacity: 1;
+    }
+
+    .thumbnail-carousel {
+      margin-top: 0.5rem;
+    }
+
     amp-youtube {
       margin-top: 2rem;
     }
@@ -315,6 +338,7 @@
       margin-top: 3.5rem;
       margin-bottom: 1rem;
     }
+
     .pull-righ {
       position: absolute;
       right: 0;
@@ -368,7 +392,8 @@
 
   <main>
     <div class="main-content">
-      <amp-img src="https://cdn.glitch.com/d7f46a57-0ca4-4cca-ab0f-69068dec6631%2Fricotta-racer.jpg?1540228217746"
+      <amp-image-lightbox id="ricotta-racer-lightbox" layout="nodisplay"></amp-image-lightbox>
+      <amp-img on="tap:ricotta-racer-lightbox" role="button" tabindex="0" src="https://cdn.glitch.com/d7f46a57-0ca4-4cca-ab0f-69068dec6631%2Fricotta-racer.jpg?1540228217746"
         layout="responsive" width="640" height="480"></amp-img>
 
       <div class="below-hero">
@@ -379,7 +404,8 @@
           hungry. Our bikes are 100% biodegradable. And with our new
           rodent-repelling varnish they last longer than ever!
         </p>
-        <amp-carousel layout="responsive" width="412" height="309" type="slides" loop>
+        <amp-carousel layout="responsive" width="412" height="309" type="slides" loop id="carousel" lightbox
+          on="slideChange:ampSelector.toggle(index=event.index)">
           <amp-img src="https://cdn.glitch.com/d7f46a57-0ca4-4cca-ab0f-69068dec6631%2Fcheddar-chaser.jpg?1540228205366"
             width="412" height="309" layout="responsive"></amp-img>
           <amp-img src="https://cdn.glitch.com/d7f46a57-0ca4-4cca-ab0f-69068dec6631%2Fcheese.jpg?1540228223785"
@@ -387,6 +413,23 @@
           <amp-img src="https://cdn.glitch.com/d7f46a57-0ca4-4cca-ab0f-69068dec6631%2Fmouse.jpg?1540228223963"
             width="412" height="309" layout="responsive"></amp-img>
         </amp-carousel>
+        <amp-selector id="ampSelector" name="single_image_select" layout="container">
+          <amp-carousel class="thumbnail-carousel" layout="fixed-height" type="carousel" width="auto" height="78">
+            <amp-img
+              src="https://cdn.glitch.com/d7f46a57-0ca4-4cca-ab0f-69068dec6631%2Fcheddar-chaser-thumb.jpg?1540228205366"
+              on="tap:carousel.goToSlide(index=0)" width="96" height="72" layout="fixed" role="button" tabindex="0"
+              option="0">
+            </amp-img>
+            <amp-img src="https://cdn.glitch.com/d7f46a57-0ca4-4cca-ab0f-69068dec6631%2Fcheese-thumb.jpg?1540228223785"
+              on="tap:carousel.goToSlide(index=1)" width="96" height="72" layout="fixed" role="button" tabindex="1"
+              option="1">
+            </amp-img>
+            <amp-img src="https://cdn.glitch.com/d7f46a57-0ca4-4cca-ab0f-69068dec6631%2Fmouse-thumb.jpg?1540228223963"
+              on="tap:carousel.goToSlide(index=2)" width="96" height="72" layout="fixed" role="button" tabindex="2"
+              option="2">
+            </amp-img>
+          </amp-carousel>
+        </amp-selector>
 
       </div>
 
@@ -410,25 +453,36 @@
               <label for="form-email">Email:</label>
             </div>
             <input class="btn" type="submit" value="Subscribe">
+            <div submit-success>
+              <template type="amp-mustache">
+                <p class="form-submit-response">
+                  Success! Thanks {{name}} for subscribing!
+                </p>
+              </template>
+            </div>
+            <div submit-error>
+              <template type="amp-mustache">
+                <p class="form-submit-response">
+                  Oops! Sorry, there was an error.
+                </p>
+              </template>
+            </div>
           </form>
         </div>
       </div>
 
       <h2 class="main-heading">Insert SVG</h2>
       <amp-carousel layout="responsive" width="480" height="480" type="slides" autoplay loop>
-      <amp-img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Hanzi.svg" layout="responsive"
-        width="480"
-        height="480"
-        alt="">
-      </amp-img>
-      
-      <amp-img src="https://upload.wikimedia.org/wikipedia/commons/f/fe/Chinese_character_%E6%8E%A1_cai3_pick_with_ROOT_colored.svg"
-      width="480"
-      height="480"
-      alt="">
-    </amp-img>
-  </amp-carousel>
-      
+        <amp-img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Hanzi.svg" layout="responsive" width="480"
+          height="480" alt="">
+        </amp-img>
+
+        <amp-img
+          src="https://upload.wikimedia.org/wikipedia/commons/f/fe/Chinese_character_%E6%8E%A1_cai3_pick_with_ROOT_colored.svg"
+          width="480" height="480" alt="">
+        </amp-img>
+      </amp-carousel>
+
       <h2 class="main-heading">Test Javascript</h2>
       <amp-script layout="container" src="https://amp.dev/documentation/examples/components/amp-script/hello-world.js">
         <button class="btn" id="hello">Remote JS</button>
