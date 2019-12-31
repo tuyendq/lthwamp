@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html amp lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://lthwamp.practicehabits.net/product.html">
+    <title>Chico's Cheese Bicycles</title>
+
+    <script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script>
+
+    <style amp-boilerplate>
+        body {
+            -webkit-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+            -moz-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+            -ms-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+            animation: -amp-start 8s steps(1, end) 0s 1 normal both
+        }
+
+        @-webkit-keyframes -amp-start {
+            from {
+                visibility: hidden
+            }
+
+            to {
+                visibility: visible
+            }
+        }
+
+        @-moz-keyframes -amp-start {
+            from {
+                visibility: hidden
+            }
+
+            to {
+                visibility: visible
+            }
+        }
+
+        @-ms-keyframes -amp-start {
+            from {
+                visibility: hidden
+            }
+
+            to {
+                visibility: visible
+            }
+        }
+
+        @-o-keyframes -amp-start {
+            from {
+                visibility: hidden
+            }
+
+            to {
+                visibility: visible
+            }
+        }
+
+        @keyframes -amp-start {
+            from {
+                visibility: hidden
+            }
+
+            to {
+                visibility: visible
+            }
+        }
+    </style><noscript>
+        <style amp-boilerplate>
+            body {
+                -webkit-animation: none;
+                -moz-animation: none;
+                -ms-animation: none;
+                animation: none
+            }
+        </style>
+    </noscript>
+    <style amp-custom>
+        body {
+            font-family: sans-serif;
+            line-height: 1.5rem;
+            min-width: 315px;
+            width: 100%;
+        }
+        main {
+            padding: 1rem;
+        }
+        .product {
+            width: 260px;
+            margin: 0 8px 24px 0;
+        }
+        .product h2 {
+            text-align: center;
+            font-size: 1rem;
+            margin: 8px 0;
+            line-height: 1rem;
+        }
+        .product p {
+            margin: 0 0 4px 0;
+            font-size: 0.8rem;
+            color: #777;
+            font-weight: bolder;
+            line-height: 14px;
+        }
+        .product p.price {
+            color: #000;
+        }
+        .product p.price span {
+            font-size: 1.125rem;
+        }
+        .filter-sort-selectors {
+            display: flex;
+            flex-flow: row;
+            align-items: center;
+        }
+        .product-selector {
+            margin: 0 20px 0 8px;
+        }
+        @media (max-width: 460px) {
+            .filter-sort-selectors {
+                display: flex;
+                flex-flow: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+
+</head>
+
+<body>
+    <main>
+        <amp-state id="productData">
+            <script type="application/json">
+                {
+                    "basePrice": 14,
+                "upcharges": {
+                    "fit": {
+                        "Men": 0,
+                        "Women": 3
+                    },
+                    "size": {
+                        "Small": 0,
+                        "Medium": 2,
+                        "Large": 5                        
+                    },
+                    "color": {
+                        "Red": 0,
+                        "Blue": 1,
+                        "Green": 0
+                    }
+                },
+                "images": {
+                    "Red": "https://cdn.glitch.com/f87df7df-18be-4e6e-8b0e-1145de279989%2Fredtshirt.jpg?1542275948053",
+                    "Blue": "https://cdn.glitch.com/f87df7df-18be-4e6e-8b0e-1145de279989%2FBlue_Tshirt.jpg?1542275946455",
+                    "Green": "https://cdn.glitch.com/f87df7df-18be-4e6e-8b0e-1145de279989%2Fgreentshirt.png?1542275950591"
+                }
+            }
+            </script>
+        </amp-state>
+        <h2>Tina's T-Shirts</h2>
+        <div class="filter-sort-selectors">
+            <p>Product fit:</p>
+            <select class="product-selector" on="change:AMP.setState({optionsData: {fit: event.value}})">
+                <option value="Men">Men's</option>
+                <option value="Women">Women's</option>
+            </select>
+            <p>Product Size:</p>
+            <select class="product-selector" on="change:AMP.setState({optionsData: {size: event.value}})">
+                <option value="Small">Small</option>
+                <option value="Medium">Medium</option>
+                <option value="Large">Large</option>
+            </select>
+            <p>Product Color:</p>
+            <select class="product-selector" on="change:AMP.setState({optionsData: {color: event.value}})">
+                <option value="Red">Red</option>
+                <option value="Green">Green</option>
+                <option value="Blue">Blue</option>
+            </select>
+        </div>
+        <div class="product">
+            <amp-img src="https://cdn.glitch.com/f87df7df-18be-4e6e-8b0e-1145de279989%2Fredtshirt.jpg?1542275948053"
+                [src]="productData.images[optionsData.color]" layout="responsive" width="350" height="350"></amp-img>
+            <h2>T-Shirt</h2>
+            <p [text]="'Fit: ' + optionsData.fit + ' - Size: ' + optionsData.size + ' - Color: ' + optionsData.color">
+                Fit: Men - Size: Small - Color: Red
+            </p>
+            <p class="price">
+                $<span [text]="productData.basePrice + 
+                               productData.upcharges.fit[optionsData.fit] + 
+                               productData.upcharges.size[optionsData.size] + 
+                               productData.upcharges.color[optionsData.color]"> 14</span>.00
+            </p>
+        </div>
+
+
+    </main>
+</body>
+
+</html>
