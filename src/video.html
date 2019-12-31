@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html amp lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>LTHW - AMP - Video</title>
+    <link rel="canonical" href="https://lthwamp.praticehabits.net/video.html">
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <script async custom-element="amp-list" src="https://cdn.ampproject.org/v0/amp-list-0.1.js"></script>
+    <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js"></script>
+    <script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script>
+
+    <script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>
+
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <style amp-custom>
+        body {
+            font-family: sans-serif;
+            line-height: 1.5rem;
+            min-width: 20rem;
+            width: 100%;
+        }
+        main {
+            margin: 1rem;
+        }
+        .video {
+            width: 13.125rem;
+            margin-right: .25rem;
+        }
+        .video h2 {
+            margin: .5rem 0;
+            font-size: 0.825rem;
+            line-height: 0.825rem;
+        }
+        .video p {
+            margin: 0 0 .25rem 0;
+            font-size: 0.75rem;
+            color: #333;
+            line-height: 0.825rem;
+        }        
+    </style>
+</head>
+<body>
+    <main>
+        <h2>Cities of Autralia</h2>
+        <amp-youtube data-videoid="eclPvG5kEp0" layout="responsive" width="480" height="270"></amp-youtube>
+
+        <amp-list width="auto" height="600" layout="fixed-height" src="data/videos.json" binding="refresh">
+            <template type="amp-mustache">
+                <div class="video">
+                    <amp-youtube data-videoid="{{id}}" layout="responsive" width="480" height="270">
+                        <amp-img src="{{img}}" placeholder layout="fill"></amp-img>
+                    </amp-youtube>
+                    <h2>{{title}}</h2>
+                    <p>Publised on {{date}}</p>
+                </div>
+            </template>
+        </amp-list>
+
+    </main>
+    
+</body>
+</html>
