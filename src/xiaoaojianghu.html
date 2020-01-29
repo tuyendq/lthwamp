@@ -14,6 +14,7 @@
 
     <style amp-custom>
     /* Add your styles here */
+    .wrapper {margin: 1rem;}
     main {margin: 0 auto; max-width: 40rem;}
     #main {font-size: 2rem; line-height: 3rem;}
     .toc {float: right; margin-left: 1rem; max-width: 16rem; /*position: sticky;*/ top: 0; /*overflow-y: scroll;*/}
@@ -65,6 +66,7 @@
     <link rel="canonical" href="http://www.zadzs.com/txt/268.html"/>
 </head>
 <body>
+  <div class="wrapper">
 <h1><a class="target-anchor" id="top"></a>
     笑傲江湖
     <amp-position-observer on="enter:hideAnim.start; exit:showAnim.start"
@@ -8835,6 +8837,6 @@
     We use the `scrollTo` action to scroll the page when the button is tapped. Find more about actions [here](https://github.com/ampproject/amphtml/blob/master/spec/amp-actions-and-events.md).
   -->
   <button id="scrollToTopButton" on="tap:top.scrollTo(duration=200)" class="scrollToTop">⌃</button>
-
+</div>
 </body>
 </html>
