@@ -6,17 +6,27 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>笑傲江湖 - 金庸</title>
     <link rel="preload" as="script" href="https://cdn.ampproject.org/v0.js">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC&display=swap">
+
     <script async src="https://cdn.ampproject.org/v0.js"></script>
     <!-- Import other AMP Extensions here -->
+    <script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
     <script async custom-element="amp-position-observer" src="https://cdn.ampproject.org/v0/amp-position-observer-0.1.js"></script>
     <script async custom-element="amp-animation" src="https://cdn.ampproject.org/v0/amp-animation-0.1.js"></script>
     <style amp-custom>
     /* Add your styles here */
+    /* body {font-family: 'Noto Serif SC', serif;}*/
     .wrapper {margin: 1rem;}
-    main {margin: 0 auto; max-width: 40rem;}
+    main {margin: 0 auto; max-width: 37.5rem;}
     #main {font-size: 2rem; line-height: 3rem;}
+    #title {margin-left: 1rem;}
+    .nav-trigger {font-size: 2rem;}
+    #dict {max-width: 16rem; padding-right: 1rem; font-size: 1.5rem;}
+    #toc{text-align: center;font-size: 1.5rem; font-weight: bold;}
     .toc {float: right; margin-left: 1rem; max-width: 16rem; /*position: sticky;*/ top: 0; /*overflow-y: scroll;*/}
     .toc li {list-style-type: none;}
+    .pull-left {position: absolute; left: 0;}
+    .pull-right {position: absolute; right: 0;}
     :root {
       --color-primary: #005AF0;
       --color-secondary: #00DCC0;
@@ -63,12 +73,14 @@
 </head>
 <body>
   <div class="wrapper">
-<h1><a class="target-anchor" id="top"></a>
-    笑傲江湖
-    <amp-position-observer on="enter:hideAnim.start; exit:showAnim.start"
-    layout="nodisplay">
-  </amp-position-observer>
-</h1>
+    <header id="header">
+      <div class="nav-trigger pull-left" role="button" tabindex="0" on="tap:dict.toggle">☰</div>
+      <h1 id="title"><a class="target-anchor" id="top"></a>
+        笑傲江湖
+        <amp-position-observer on="enter:hideAnim.start; exit:showAnim.start" layout="nodisplay">
+        </amp-position-observer>
+      </h1>
+    </header>
   <!--
     We use 2 `amp-animation` elements to trigger the visibility of the button. The first one is for making the button visible...
   -->
@@ -112,29 +124,29 @@
 <section class="toc">
     <p id="toc" style="text-align: center; font-size: 1.5rem;">目录</p>
 <ul>
-    <li><a href="#chapter1">一 灭门</a></li>
+    <li><a href="#chapter1">一 灭门 Diệt môn</a></li>
     <li><a href="#chapter2">二 聆秘</a></li>
     <li><a href="#chapter3">三 救难</a></li>
-    <li><a href="#chapter4">四 坐斗</a></li>
+    <li><a href="#chapter4">四 坐斗 Tọa đấu</a></li>
     <li><a href="#chapter5">五 治伤</a></li>
-    <li><a href="#chapter6">六 洗手</a></li>
+    <li><a href="#chapter6">六 洗手 Tẩy thủ</a></li>
     <li><a href="#chapter7">七 授谱</a></li>
     <li><a href="#chapter8">八 面壁</a></li>
     <li><a href="#chapter9">九 邀客</a></li>
-    <li><a href="#chapter10">十 传剑</a></li>
-    <li><a href="#chapter11">十一 聚气</a></li>
+    <li><a href="#chapter10">十 传剑 Truyền kiếm</a></li>
+    <li><a href="#chapter11">十一 聚气 Tụ khí</a></li>
     <li><a href="#chapter12">十二 围攻</a></li>
-    <li><a href="#chapter13">十三 学琴</a></li>
+    <li><a href="#chapter13">十三 学琴 Học cầm</a></li>
     <li><a href="#chapter14">十四 论杯</a></li>
     <li><a href="#chapter15">十五 灌药</a></li>
-    <li><a href="#chapter16">十六 注血</a></li>
+    <li><a href="#chapter16">十六 注血 Chú huyết</a></li>
     <li><a href="#chapter17">十七 倾心</a></li>
-    <li><a href="#chapter18">十八 联手</a></li>
+    <li><a href="#chapter18">十八 联手 Liên thủ</a></li>
     <li><a href="#chapter19">十九 打赌</a></li>
     <li><a href="#chapter20">二十 入狱</a></li>
-    <li><a href="#chapter21">二十一 囚居</a></li>
+    <li><a href="#chapter21">二十一 囚居 Ngục cư</a></li>
     <li><a href="#chapter22">二十二 脱困</a></li>
-    <li><a href="#chapter23">二十三 伏击</a></li>
+    <li><a href="#chapter23">二十三 伏击 Phục kích</a></li>
     <li><a href="#chapter24">二十四 蒙冤</a></li>
     <li><a href="#chapter25">二十五 闻讯</a></li>
     <li><a href="#chapter26">二十六 围寺</a></li>
@@ -144,24 +156,41 @@
     <li><a href="#chapter30">三十 密议</a></li>
     <li><a href="#chapter31">三十一 绣花</a></li>
     <li><a href="#chapter32">三十二 并派</a></li>
-    <li><a href="#chapter33">三十三 比剑</a></li>
-    <li><a href="#chapter34">三十四 夺帅</a></li>
+    <li><a href="#chapter33">三十三 比剑 Tỷ kiếm</a></li>
+    <li><a href="#chapter34">三十四 夺帅 Đoạt súy</a></li>
     <li><a href="#chapter35">三十五 复仇</a></li>
     <li><a href="#chapter36">三十六 伤逝</a></li>
     <li><a href="#chapter37">三十七 迫娶</a></li>
     <li><a href="#chapter38">三十八 聚歼</a></li>
     <li><a href="#chapter39">三十九 拒盟</a></li>
     <li><a href="#chapter40">四十 曲谐</a></li>
-    <li><a href="#final">后记</a></li>
+    <li><a href="#final">后记 Hậu ký</a></li>
 </ul>
 </section>
+<amp-sidebar id="dict" layout="nodisplay" side="right">
+  <ul>
+    <li>金庸: Kim Dung</li>
+    <li>刘正风: Luu Chinh Phong</li>
+    <li>令狐冲: Lệnh Hồ Xung</li>
+    <li>岳不群: Nhạc Bất Quần</li>
+    <li>天门道人: Thien mon dao nhan</li>
+    <li>定逸师太: Dinh Dat su thai</li>
+    <li>余沧海: Du Thuong Hai</li>
+    <li>林平之: Lam Binh Chi</li>
+    <li>田伯光: Điền Bá Quang</li>
+    <li>左盟主: Tả minh chủ</li>
+    <li>青城派: Thanh Thanh phai</li>
+    <li>神通广大: thần thông quảng đại</li>
+    <li>各种各样: cacs chung cac dangj</li>
+  </ul>
+</amp-sidebar>
 <main>
 
-<section>
+<section id="intro">
 <p>书名：笑傲江湖</p>
 
 <p>作者：金庸</p>
-<section>
+
 <hr>
 
 <p>☆ 本文由早安电子书网友分享，版权归原作者所有 ☆</p>
@@ -173,7 +202,7 @@
 <p>☆ <a href="http://www.zadzs.com" target="_blank">http://www.zadzs.com</a> ☆</p>
 
 <hr>
-</section>
+
 </section>
 
 <section id="main">
